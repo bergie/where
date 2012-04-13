@@ -1,5 +1,5 @@
 toRadians = (degrees) -> degrees * Math.PI / 180
-toDegrees = (radians) -> radians / Math.PI * 180
+toDegrees = (radians) -> radians * 180 / Math.PI
 
 class Point
   lat: null
@@ -39,7 +39,7 @@ class Point
     y = Math.sin(deltaLon) * Math.cos(lat2)
     x = Math.cos(lat1) * Math.sin(lat2) - Math.sin(lat1) * Math.cos(lat2) * Math.cos(deltaLon)
     res = toDegrees Math.atan2 y, x
-    Math.round(((res + 360) % 360) * 10) / 10
+    Math.round (res + 360) % 360
 
   directionTo: (to) ->
     bearing = @bearingTo to
@@ -51,7 +51,7 @@ class Point
     dir = dirs[2 * Math.floor(((Math.floor(rounded / 4) + 1) % 4) / 2)]
     dir += dirs[1 + 2 * Math.floor(rounded / 8)]
 
-  distanceTo: (to) ->
+  distanceTo: (to, unit = 'K') ->
     startLat = toRadians @lat
     startLon = toRadians @lon
     endLat = toRadians to.lat
@@ -60,7 +60,9 @@ class Point
     dLon = endLon - startLon
     a = Math.pow(Math.sin(dLat / 2.0), 2) + Math.cos(startLat) * Math.cos(endLat) * Math.pow(Math.sin(dLon / 2.0), 2)
     c = 2.0 * Math.atan2 Math.sqrt(a), Math.sqrt(1.0 - a)
-    Math.round((6371.0 * c) * 10) / 10
+    res = Math.round((6371.0 * c) * 10) / 10
+    return Math.round((res * 0.539956803) * 10) / 10 if unit is 'N'
+    res
 
   getBBox: (distance) -> null
 
