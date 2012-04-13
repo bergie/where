@@ -7,10 +7,13 @@ describe 'Geographical bounding box', ->
   it 'should have corners', ->
     sw = new Point 60.254558, 24.963333
     ne = new Point 60.317222, 25.042828
-
     box = new BBox sw, ne
+
+    # Corners actually set via constructor
     box.sw.should.equal sw
     box.ne.should.equal ne
+
+    # Calculated corners
     box.se.lat.should.equal sw.lat
     box.se.lon.should.equal ne.lon
     box.nw.lat.should.equal ne.lat

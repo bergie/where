@@ -59,3 +59,26 @@ describe 'Geographical point', ->
 
     # Midgard airport is way to the south
     efhf.bearingTo(fymg).should.equal 187
+
+  it 'should be able to tell direction to other points', ->
+    # Helsinki-Vantaa is in northwest of Helsinki-Malmi
+    efhf.directionTo(efhk).should.equal 'NW'
+
+    # Helsinki-Malmi is in southeast of Helsinki-Vantaa 
+    efhk.directionTo(efhf).should.equal 'SE'
+
+    # Midgard is way south
+    efhf.directionTo(fymg).should.equal 'S'
+
+  it 'should be able to produce a bounding box for a desired radius', ->
+    # Get 20km bounding box
+    bbox = efhf.getBBox 20
+
+    # Ensure the box corners are in right directions
+    efhf.directionTo(bbox.sw).should.equal 'SW'
+    efhf.directionTo(bbox.ne).should.equal 'NE'
+
+    # Check that the distance to a corner is correct
+    # Note: using 2d trigonometry on a 3D globe, so numbers are not exact.
+    distance = bbox.ne.distanceTo efhf
+    Math.round(distance).should.equal Math.round Math.sqrt Math.pow(20, 2) + Math.pow(20, 2)

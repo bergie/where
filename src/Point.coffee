@@ -25,5 +25,10 @@ class Point
 
     "#{prettyPrint(@lat)}#{ns} #{prettyPrint(@lon)}#{ew}"
 
+  bearingTo: (to) -> 0
+  directionTo: (to) -> 'S'
+  distanceTo: (to) -> 0
+  getBBox: (distance) -> null
+
 root = exports ? window
 root.Point = Point
