@@ -1,3 +1,5 @@
+toRadians = (degrees) -> degrees * Math.PI / 180
+
 class Point
   lat: null
   lon: null
@@ -27,7 +29,18 @@ class Point
 
   bearingTo: (to) -> 0
   directionTo: (to) -> 'S'
-  distanceTo: (to) -> 0
+
+  distanceTo: (to) ->
+    startLat = toRadians @lat
+    startLon = toRadians @lon
+    endLat = toRadians to.lat
+    endLon = toRadians to.lon
+    dLat = endLat - startLat
+    dLon = endLon - startLon
+    a = Math.pow(Math.sin(dLat / 2.0), 2) + Math.cos(startLat) * Math.cos(endLat) * Math.pow(Math.sin(dLon / 2.0), 2)
+    c = 2.0 * Math.atan2 Math.sqrt(a), Math.sqrt(1.0 - a)
+    6371.0 * c
+
   getBBox: (distance) -> null
 
 root = exports ? window
