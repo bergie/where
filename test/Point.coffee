@@ -1,7 +1,7 @@
 chai = require 'chai'
 do chai.should
 
-{Point} = require '../src/Point'
+{Point} = require '../index'
 
 describe 'Geographical point', ->
   it 'should have coordinates', ->
