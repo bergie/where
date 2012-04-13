@@ -25,4 +25,5 @@ class Point
 
     "#{prettyPrint(@lat)}#{ns} #{prettyPrint(@lon)}#{ew}"
 
-exports.Point = Point
+root = exports ? window
+root.Point = Point

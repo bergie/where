@@ -24,6 +24,7 @@ describe 'Geographical point', ->
     fymg.lon.should.equal 17.366667
 
   it 'should only accept numbers', ->
+    (-> new Point).should.throw 'A pair of WGS-84 coordinates expected'
     (-> new Point('foo', 'bar')).should.throw 'A pair of WGS-84 coordinates expected'
 
   it 'should only allow sensible latitudes', ->
