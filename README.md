@@ -38,6 +38,8 @@ Pretty printing to human-readable coordinates:
     $ npm install --dev
     $ npm test
 
+[![Build Status](https://secure.travis-ci.org/bergie/where.png?branch=master)](http://travis-ci.org/bergie/where)
+
 ## Development
 
 This library is provided under the MIT license. Contributions to the project are welcome on GitHub.
