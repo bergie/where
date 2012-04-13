@@ -19,7 +19,7 @@ Calculating bearing and direction from a point to another:
     malmi.bearingTo(vantaa);   // 329
     malmi.directionTo(vantaa); // NW
 
-Creating bounding boxes for a given radius:
+Creating bounding boxes for a given radius (coming soon):
 
     // 20km bounding box
     var bbox = malmi.getBBox(20);
