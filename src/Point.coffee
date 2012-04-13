@@ -39,7 +39,7 @@ class Point
     y = Math.sin(deltaLon) * Math.cos(lat2)
     x = Math.cos(lat1) * Math.sin(lat2) - Math.sin(lat1) * Math.cos(lat2) * Math.cos(deltaLon)
     res = toDegrees Math.atan2 y, x
-    (res + 360) % 360
+    Math.round(((res + 360) % 360) * 10) / 10
 
   directionTo: (to) ->
     bearing = @bearingTo to
@@ -60,7 +60,7 @@ class Point
     dLon = endLon - startLon
     a = Math.pow(Math.sin(dLat / 2.0), 2) + Math.cos(startLat) * Math.cos(endLat) * Math.pow(Math.sin(dLon / 2.0), 2)
     c = 2.0 * Math.atan2 Math.sqrt(a), Math.sqrt(1.0 - a)
-    6371.0 * c
+    Math.round((6371.0 * c) * 10) / 10
 
   getBBox: (distance) -> null
 
