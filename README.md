@@ -31,7 +31,7 @@ Pretty printing to human-readable coordinates:
 
 ## Installation
 
-    $ npm install nogeo
+    $ npm install where
 
 ## Running tests
 

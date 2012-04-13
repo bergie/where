@@ -1,12 +1,12 @@
 {
-  "name": "nogeo",
+  "name": "where",
   "description": "Geographical utilities for location-based Node.js applications",
   "keywords": ["location", "coordinates", "geo", "point", "gis"],
   "author": "Henri Bergius <henri.bergius@iki.fi>",
   "version": "0.0.1",
   "licenses": [{
     "type": "MIT",
-    "url": "https://github.com/bergie/nogeo/raw/master/LICENSE"
+    "url": "https://github.com/bergie/where/raw/master/LICENSE"
   }],
   "dependencies": {
     "coffee-script": "1.x.x"
@@ -18,9 +18,9 @@
   "main": "./index.js",
   "repository": {
     "type": "git",
-    "url": "git://github.com/bergie/nogeo.git"
+    "url": "git://github.com/bergie/where.git"
   },
   "scripts":    {
-    "test": "mocha --compilers coffee:coffee-script -R spec"
+    "test": "./node_modules/mocha/bin/mocha --compilers coffee:coffee-script -R spec"
   }
 }
