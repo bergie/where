@@ -15,3 +15,8 @@ describe 'Geographical bounding box', ->
     box.se.lon.should.equal ne.lon
     box.nw.lat.should.equal ne.lat
     box.nw.lon.should.equal sw.lon
+
+  it 'should not allow arguments in wrong order', ->
+    sw = new Point 60.254558, 25.042828
+    ne = new Point 60.317222, 24.963333
+    (-> new BBox(sw, ne)).should.throw 'South-West corner and North-East corner have to be in correct order'

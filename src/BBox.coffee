@@ -6,6 +6,8 @@ class BBox
   ne: null
 
   constructor: (@sw, @ne) ->
+    unless @sw.lat < @ne.lat and @sw.lon < @ne.lon
+      throw new Error 'South-West corner and North-East corner have to be in correct order'
 
 # Getters that create Point instances for the south-east and 
 # north-west corners
