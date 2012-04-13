@@ -1,4 +1,5 @@
 toRadians = (degrees) -> degrees * Math.PI / 180
+toDegrees = (radians) -> radians / Math.PI * 180
 
 class Point
   lat: null
@@ -27,8 +28,28 @@ class Point
 
     "#{prettyPrint(@lat)}#{ns} #{prettyPrint(@lon)}#{ew}"
 
-  bearingTo: (to) -> 0
-  directionTo: (to) -> 'S'
+  bearingTo: (to) ->
+    distance = @distanceTo to
+    return 0 if distance is 0
+
+    deltaLon = toRadians to.lon - @lon
+    lat1 = toRadians @lat
+    lat2 = toRadians to.lat
+
+    y = Math.sin(deltaLon) * Math.cos(lat2)
+    x = Math.cos(lat1) * Math.sin(lat2) - Math.sin(lat1) * Math.cos(lat2) * Math.cos(deltaLon)
+    res = toDegrees Math.atan2 y, x
+    (res + 360) % 360
+
+  directionTo: (to) ->
+    bearing = @bearingTo to
+    dirs = ['N', 'E', 'S', 'W']
+    rounded = Math.round(bearing / 22.5) % 16
+
+    return dirs[rounded / 4] if (rounded % 4) is 0
+ 
+    dir = dirs[2 * Math.floor(((Math.floor(rounded / 4) + 1) % 4) / 2)]
+    dir += dirs[1 + 2 * Math.floor(rounded / 8)]
 
   distanceTo: (to) ->
     startLat = toRadians @lat
