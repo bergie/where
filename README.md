@@ -39,11 +39,11 @@ Converting human-readable addresses to coordinates (geocoding, powered by [OpenS
     });
 
 Converting coordinates to human-readable addresses (reverse geocoding, powered by [OpenStreetMap Nominatim](http://wiki.openstreetmap.org/wiki/Nominatim)):
-  
-   geocoder.fromPoint(malmi, function (err, location) {
-     location.address.road; // Malminkaari
-     location.address.city; // Helsinki
-   });
+
+    geocoder.fromPoint(malmi, function (err, location) {
+      location.address.road; // Malminkaari
+      location.address.city; // Helsinki
+    });
 
 Creating bounding boxes for a given radius (coming soon):
 
