@@ -5,10 +5,14 @@ This library provides some basic utilities for building location-based applicati
 
 ## Some features
 
+Start by importing _where_:
+
+    var where = require('where');
+
 Given two points, the Helsinki-Malmi and Helsinki-Vantaa airports:
 
-    var malmi = new Point(60.254558, 25.042828);
-    var vantaa = new Point(60.317222, 24.963333);
+    var malmi = new where.Point(60.254558, 25.042828);
+    var vantaa = new where.Point(60.317222, 24.963333);
 
 Calculating distances between points:
 
@@ -19,15 +23,33 @@ Calculating bearing and direction from a point to another:
     malmi.bearingTo(vantaa);   // 329
     malmi.directionTo(vantaa); // NW
 
+Pretty printing to human-readable coordinates:
+
+    malmi.toString(); // 60°15′16″N 25°2′34″E
+
+Converting human-readable addresses to coordinates (geocoding, powered by [OpenStreetMap Nominatim](http://wiki.openstreetmap.org/wiki/Nominatim)):
+
+    var geocoder = new where.Geocoder;
+    geocoder.toPoint({
+      display_name: 'Helsinki',
+      country: 'fi'
+    }, function (err, points) {
+      points[0].lat; // 60.1666277
+      points[0].lon; // 24.9435079 
+    });
+
+Converting coordinates to human-readable addresses (reverse geocoding, powered by [OpenStreetMap Nominatim](http://wiki.openstreetmap.org/wiki/Nominatim)):
+  
+   geocoder.fromPoint(malmi, function (err, location) {
+     location.address.road; // Malminkaari
+     location.address.city; // Helsinki
+   });
+
 Creating bounding boxes for a given radius (coming soon):
 
     // 20km bounding box
     var bbox = malmi.getBBox(20);
     malmi.directionTo(bbox.sw); // SW
-
-Pretty printing to human-readable coordinates:
-
-    malmi.toString(); // 60°15′16″N 25°2′34″E
 
 ## Installation
 

@@ -3,13 +3,14 @@ request = require 'request'
 
 class Geocoder
   url: 'http://nominatim.openstreetmap.org/search'
+  revUrl: 'http://nominatim.openstreetmap.org/reverse'
 
   toPoint: (location, cb) ->
     request
       uri: @url
       qs:
-        q: location.string
-        countrycodes: location.country
+        q: location.display_name
+        countrycodes: location.country_code
         format: 'json'
     , (err, resp, body) ->
       return cb err, null if err
@@ -18,6 +19,19 @@ class Geocoder
       for result in results
         points.push new Point parseFloat(result.lat), parseFloat(result.lon)
       cb null, points
+
+  fromPoint: (point, cb) ->
+    request
+      uri: @revUrl
+      qs:
+        lat: point.lat
+        lon: point.lon
+        addressdetails: 1
+        format: 'json'
+    , (err, resp, body) ->
+      return cb err, null if err
+      cb null, JSON.parse body
+
 
 root = exports ? window
 root.Geocoder = Geocoder
