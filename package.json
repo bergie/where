@@ -9,7 +9,8 @@
     "url": "https://github.com/bergie/where/raw/master/LICENSE"
   }],
   "dependencies": {
-    "coffee-script": "1.x.x"
+    "coffee-script": "1.x.x",
+    "request": "2.9.x"
   },
   "devDependencies": {
     "chai": "0.5.x",
