@@ -41,6 +41,16 @@ class Point
     res = toDegrees Math.atan2 y, x
     Math.round (res + 360) % 360
 
+  bearingChange: (origin, to) ->
+    previous = origin.bearingTo to
+    current = to.bearingTo @
+    difference = current - previous
+    while difference < -180
+      difference += 360
+    while difference > 180
+      difference -= 360
+    difference
+
   directionTo: (to) ->
     bearing = @bearingTo to
     dirs = ['N', 'E', 'S', 'W']

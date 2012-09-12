@@ -60,6 +60,22 @@ describe 'Geographical point', ->
     # Midgard airport is way to the south
     efhf.bearingTo(fymg).should.equal 187
 
+  it 'should be able to calculate changes in direction', ->
+    # Started from Malmi towards Vantaa, then turned back
+    efhf.bearingChange(efhf, efhk).should.equal -180
+
+    # Started from Malmi, and stayed there
+    efhf.bearingChange(efhf, efhf).should.equal 0
+
+    # Started from Vantaa towards Midgard, then turned to Malmi
+    efhf.bearingChange(efhk, fymg).should.equal 177
+
+    # Started from Vantaa towards Malmi, then turned to Midgard
+    fymg.bearingChange(efhk, efhf).should.equal 39
+
+    # Started from Malmi towards Vantaa, then turned to Midgard
+    fymg.bearingChange(efhf, efhk).should.equal -141
+
   it 'should be able to tell direction to other points', ->
     # Helsinki-Vantaa is in northwest of Helsinki-Malmi
     efhf.directionTo(efhk).should.equal 'NW'
