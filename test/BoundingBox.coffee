@@ -22,4 +22,4 @@ describe 'Geographical bounding box', ->
   it 'should not allow arguments in wrong order', ->
     sw = new Point 60.254558, 25.042828
     ne = new Point 60.317222, 24.963333
-    (-> new BBox(sw, ne)).should.throw 'South-West corner and North-East corner have to be in correct order'
+    (-> new BBox(sw, ne)).should.throw 'SW corner and NE corner have to be in correct order'

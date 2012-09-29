@@ -7,9 +7,9 @@ class BBox
 
   constructor: (@sw, @ne) ->
     unless @sw.lat < @ne.lat and @sw.lon < @ne.lon
-      throw new Error 'South-West corner and North-East corner have to be in correct order'
+      throw new Error 'SW corner and NE corner have to be in correct order'
 
-# Getters that create Point instances for the south-east and 
+# Getters that create Point instances for the south-east and
 # north-west corners
 Object.defineProperty BBox::, 'se',
   get: -> new Point @sw.lat, @ne.lon

@@ -16,7 +16,8 @@
   },
   "devDependencies": {
     "chai": "0.5.x",
-    "mocha": "1.0.x"
+    "mocha": "1.0.x",
+    "coffeelint": "*"
   },
   "main": "./index.js",
   "repository": {
@@ -24,6 +25,7 @@
     "url": "git://github.com/bergie/where.git"
   },
   "scripts":    {
-    "test": "./node_modules/mocha/bin/mocha --compilers coffee:coffee-script -R spec"
+    "pretest": "./node_modules/.bin/coffeelint -f test/coffeelint.json -r src",
+    "test": "./node_modules/.bin/mocha --compilers coffee:coffee-script -R spec"
   }
 }
