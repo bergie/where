@@ -1,4 +1,3 @@
-require 'coffee-script'
 {Point} = require './Point.coffee'
 
 class BBox
