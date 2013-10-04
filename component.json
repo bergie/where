@@ -1,0 +1,17 @@
+{
+  "name": "where",
+  "description": "Geographical utilities for location-based JavaScript applications",
+  "author": "Henri Bergius <henri.bergius@iki.fi>",
+  "repo": "bergie/where",
+  "version": "0.0.1",
+  "keywords": [
+  ],
+  "dependencies": {
+  },
+  "scripts": [
+    "src/Point.coffee",
+    "src/BBox.coffee",
+    "index_browser.js"
+  ],
+  "main": "index_browser.js"
+}
