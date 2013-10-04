@@ -18,7 +18,7 @@ describe 'Geocoder', ->
     # Helsinki-Malmi airport in Finland
     efhf = new Point 60.254558, 25.042828
     geocoder.fromPoint efhf, (err, location) ->
-      location.display_name.should.equal 'D, Malminkaari, Malmin lentokenttä, Malmi, Helsinki, Helsingin seutukunta, Uusimaa, 00730, Finland'
+      location.display_name.indexOf('Malmin lento').should.not.equal -1
       location.address.neighbourhood.should.equal 'Malmin lentokenttä'
       location.address.city.should.equal 'Helsinki'
       location.address.country_code.should.equal 'fi'
