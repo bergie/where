@@ -18,7 +18,7 @@ var malmi = new where.Point(60.254558, 25.042828);
 var vantaa = new where.Point(60.317222, 24.963333);
 ```
 
-Calculating distances between points:
+Calculating distances between points (in kilometers):
 
 ```javascript
 malmi.distanceTo(vantaa); // 8.2
