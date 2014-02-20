@@ -3,17 +3,17 @@
   "description": "Geographical utilities for location-based Node.js applications",
   "keywords": ["location", "coordinates", "geo", "point", "gis"],
   "author": "Henri Bergius <henri.bergius@iki.fi>",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "licenses": [{
     "type": "MIT",
     "url": "https://github.com/bergie/where/raw/master/LICENSE"
   }],
   "dependencies": {
-    "coffee-script": "1.x.x"
+    "coffee-script": "1.7.x"
   },
   "devDependencies": {
-    "chai": "0.5.x",
-    "mocha": "1.0.x",
+    "chai": "1.9.x",
+    "mocha": "1.17.x",
     "coffeelint": "*",
     "request": "2.9.x",
     "nodext": "0.1.x",
@@ -26,6 +26,6 @@
   },
   "scripts":    {
     "pretest": "./node_modules/.bin/coffeelint -f test/coffeelint.json -r src",
-    "test": "./node_modules/.bin/mocha --compilers coffee:coffee-script -R spec"
+    "test": "./node_modules/.bin/mocha --compilers coffee:coffee-script/register -R spec"
   }
 }
