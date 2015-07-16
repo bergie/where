@@ -9,13 +9,13 @@
     "url": "https://github.com/bergie/where/raw/master/LICENSE"
   }],
   "dependencies": {
-    "coffee-script": "1.7.x"
+    "coffee-script": "1.7.x",
+    "request": "2.9.x"
   },
   "devDependencies": {
     "chai": "1.9.x",
     "mocha": "1.17.x",
     "coffeelint": "*",
-    "request": "2.9.x",
     "nodext": "0.1.x",
     "express": "2.5.x"
   },
