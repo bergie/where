@@ -1,5 +1,12 @@
 language: node_js
 node_js:
-  - "4.6"
-
+- '4.6'
 script: npm test
+deploy:
+  provider: npm
+  email: henri.bergius@iki.fi
+  api_key:
+    secure: gBlGgaFSMPeNjy5rkN6898K1kXcZrp8p69kS+e0XBOBkJLkLY+dF6K5TGWSf1k8hsRnqWc2g6XWkm41NvUANLifeXc7tHVDHCIHJjjLNoi1jGUFtmzsH82m1PIqk8h9tnChUMBcqROtxIUKkTiAygElWJRLC9yPh5gHvJFoN20g=
+  on:
+    tags: true
+    repo: bergie/where
