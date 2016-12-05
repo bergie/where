@@ -1,5 +1,6 @@
 request = require 'request'
 {Point} = require './Point'
+where = require '../package.json'
 
 class Geocoder
   url: 'http://nominatim.openstreetmap.org/search'
@@ -12,6 +13,8 @@ class Geocoder
         q: location.display_name
         countrycodes: location.country_code
         format: 'json'
+      headers:
+        'User-Agent': "Where #{where.version}"
     , (err, resp, body) ->
       return cb err, null if err
       results = JSON.parse body
@@ -28,10 +31,11 @@ class Geocoder
         lon: point.lon
         addressdetails: 1
         format: 'json'
+      headers:
+        'User-Agent': "Where #{where.version}"
     , (err, resp, body) ->
       return cb err, null if err
       cb null, JSON.parse body
-
 
 root = exports ? window
 root.Geocoder = Geocoder
