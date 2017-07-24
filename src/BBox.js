@@ -1,19 +1,33 @@
-{Point} = require './Point.coffee'
+/*
+ * decaffeinate suggestions:
+ * DS206: Consider reworking classes to avoid initClass
+ * DS207: Consider shorter variations of null checks
+ * Full docs: https://github.com/decaffeinate/decaffeinate/blob/master/docs/suggestions.md
+ */
+const {Point} = require('./Point.coffee');
 
-class BBox
-  sw: null
-  ne: null
+class BBox {
+  static initClass() {
+    this.prototype.sw = null;
+    this.prototype.ne = null;
+  }
 
-  constructor: (@sw, @ne) ->
-    unless @sw.lat < @ne.lat and @sw.lon < @ne.lon
-      throw new Error 'SW corner and NE corner have to be in correct order'
+  constructor(sw, ne) {
+    this.sw = sw;
+    this.ne = ne;
+    if (!(this.sw.lat < this.ne.lat) || !(this.sw.lon < this.ne.lon)) {
+      throw new Error('SW corner and NE corner have to be in correct order');
+    }
+  }
+}
+BBox.initClass();
 
-# Getters that create Point instances for the south-east and
-# north-west corners
-Object.defineProperty BBox::, 'se',
-  get: -> new Point @sw.lat, @ne.lon
-Object.defineProperty BBox::, 'nw',
-  get: -> new Point @ne.lat, @sw.lon
+// Getters that create Point instances for the south-east and
+// north-west corners
+Object.defineProperty(BBox.prototype, 'se',
+  {get() { return new Point(this.sw.lat, this.ne.lon); }});
+Object.defineProperty(BBox.prototype, 'nw',
+  {get() { return new Point(this.ne.lat, this.sw.lon); }});
 
-root = exports ? window
-root.BBox = BBox
+const root = typeof exports !== 'undefined' && exports !== null ? exports : window;
+root.BBox = BBox;
