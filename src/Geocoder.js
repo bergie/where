@@ -28,6 +28,9 @@ class Geocoder {
       }
     }, function (err, resp, body) {
       if (err) { return cb(err, null); }
+      if (resp.statusCode !== 200) {
+        return cb(new Error(`Nominatim failed with ${resp.statusCode}`));
+      }
       const results = JSON.parse(body);
       const points = [];
       for (let result of Array.from(results)) {
@@ -51,6 +54,9 @@ class Geocoder {
       }
     }, function (err, resp, body) {
       if (err) { return cb(err, null); }
+      if (resp.statusCode !== 200) {
+        return cb(new Error(`Nominatim failed with ${resp.statusCode}`));
+      }
       return cb(null, JSON.parse(body));
     });
   }

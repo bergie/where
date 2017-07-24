@@ -17,6 +17,7 @@ describe('Geocoder', function() {
       country_code: 'fi'
     }
     , function(err, points) {
+      if (err) { return done(err); }
       Math.round(points[0].lat).should.equal(60);
       Math.round(points[0].lon).should.equal(25);
       return done();
@@ -28,6 +29,7 @@ describe('Geocoder', function() {
     // Helsinki-Malmi airport in Finland
     const efhf = new Point(60.254558, 25.042828);
     return geocoder.fromPoint(efhf, function(err, location) {
+      if (err) { return done(err); }
       location.display_name.indexOf('Malmin lento').should.not.equal(-1);
       location.address.neighbourhood.should.equal('Malmin lentokenttä');
       location.address.city.should.equal('Helsinki');
