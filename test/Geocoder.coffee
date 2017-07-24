@@ -6,6 +6,7 @@ do chai.should
 describe 'Geocoder', ->
   geocoder = new Geocoder
   it 'should be able to convert city and country to coordinates', (done) ->
+    @timeout 4000
     geocoder.toPoint
       display_name: 'Helsinki'
       country_code: 'fi'
@@ -15,6 +16,7 @@ describe 'Geocoder', ->
       done()
 
   it 'should be able to convert coordinates to a place', (done) ->
+    @timeout 4000
     # Helsinki-Malmi airport in Finland
     efhf = new Point 60.254558, 25.042828
     geocoder.fromPoint efhf, (err, location) ->
