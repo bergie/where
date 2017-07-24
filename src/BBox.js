@@ -4,7 +4,7 @@
  * DS207: Consider shorter variations of null checks
  * Full docs: https://github.com/decaffeinate/decaffeinate/blob/master/docs/suggestions.md
  */
-const {Point} = require('./Point.coffee');
+const {Point} = require('./Point');
 
 class BBox {
   static initClass() {
