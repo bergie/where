@@ -7,12 +7,7 @@
 const {Point} = require('./Point');
 
 class BBox {
-  static initClass() {
-    this.prototype.sw = null;
-    this.prototype.ne = null;
-  }
-
-  constructor(sw, ne) {
+  constructor (sw, ne) {
     this.sw = sw;
     this.ne = ne;
     if (!(this.sw.lat < this.ne.lat) || !(this.sw.lon < this.ne.lon)) {
@@ -20,14 +15,21 @@ class BBox {
     }
   }
 }
-BBox.initClass();
 
 // Getters that create Point instances for the south-east and
 // north-west corners
 Object.defineProperty(BBox.prototype, 'se',
-  {get() { return new Point(this.sw.lat, this.ne.lon); }});
+  {
+    get () {
+      return new Point(this.sw.lat, this.ne.lon);
+    }
+  });
 Object.defineProperty(BBox.prototype, 'nw',
-  {get() { return new Point(this.ne.lat, this.sw.lon); }});
+  {
+    get () {
+      return new Point(this.ne.lat, this.sw.lon);
+    }
+  });
 
 const root = typeof exports !== 'undefined' && exports !== null ? exports : window;
 root.BBox = BBox;

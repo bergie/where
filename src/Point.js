@@ -1,7 +1,6 @@
 /*
  * decaffeinate suggestions:
  * DS102: Remove unnecessary code created because of implicit returns
- * DS206: Consider reworking classes to avoid initClass
  * DS207: Consider shorter variations of null checks
  * Full docs: https://github.com/decaffeinate/decaffeinate/blob/master/docs/suggestions.md
  */
@@ -9,12 +8,7 @@ const toRadians = degrees => (degrees * Math.PI) / 180;
 const toDegrees = radians => (radians * 180) / Math.PI;
 
 class Point {
-  static initClass() {
-    this.prototype.lat = null;
-    this.prototype.lon = null;
-  }
-
-  constructor(lat, lon) {
+  constructor (lat, lon) {
     this.lat = lat;
     this.lon = lon;
     if ((typeof this.lat !== 'number') || (typeof this.lon !== 'number')) {
@@ -28,8 +22,8 @@ class Point {
     }
   }
 
-  toString() {
-    const prettyPrint = function(coord) {
+  toString () {
+    const prettyPrint = function (coord) {
       const degreesFloat = Math.abs(coord);
       const degrees = Math.floor(degreesFloat);
       const minutesFloat = 60 * (degreesFloat - degrees);
@@ -45,7 +39,7 @@ class Point {
     return `${prettyPrint(this.lat)}${ns} ${prettyPrint(this.lon)}${ew}`;
   }
 
-  bearingTo(to) {
+  bearingTo (to) {
     const distance = this.distanceTo(to);
     if (distance === 0) { return 0; }
 
@@ -59,7 +53,7 @@ class Point {
     return Math.round((res + 360) % 360);
   }
 
-  bearingChange(origin, to) {
+  bearingChange (origin, to) {
     const previous = origin.bearingTo(to);
     const current = to.bearingTo(this);
     let difference = current - previous;
@@ -72,18 +66,19 @@ class Point {
     return difference;
   }
 
-  directionTo(to) {
+  directionTo (to) {
     const bearing = this.bearingTo(to);
     const dirs = ['N', 'E', 'S', 'W'];
     const rounded = Math.round(bearing / 22.5) % 16;
 
     if ((rounded % 4) === 0) { return dirs[rounded / 4]; }
- 
+
     let dir = dirs[2 * Math.floor(((Math.floor(rounded / 4) + 1) % 4) / 2)];
-    return dir += dirs[1 + (2 * Math.floor(rounded / 8))];
+    dir += dirs[1 + (2 * Math.floor(rounded / 8))];
+    return dir;
   }
 
-  distanceTo(to, unit) {
+  distanceTo (to, unit) {
     if (unit == null) { unit = 'K'; }
     const startLat = toRadians(this.lat);
     const startLon = toRadians(this.lon);
@@ -98,9 +93,10 @@ class Point {
     return res;
   }
 
-  getBBox(distance) { return null; }
+  getBBox (distance) {
+    return null;
+  }
 }
-Point.initClass();
 
 const root = typeof exports !== 'undefined' && exports !== null ? exports : window;
 root.Point = Point;
