@@ -14,6 +14,9 @@
   "dependencies": {
     "request": "^2.79.0"
   },
+  "engines": {
+    "node" : ">=6"
+  },
   "devDependencies": {
     "chai": "^4.1.0",
     "eslint": "^4.3.0",
