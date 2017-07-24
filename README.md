@@ -69,7 +69,7 @@ malmi.directionTo(bbox.sw); // SW
 
 ## Installation
 
-    $ npm install where
+    $ npm install where --save
 
 ## Running tests
 
