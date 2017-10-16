@@ -1,4 +1,4 @@
-Geographical utilities for Node.js [![Build Status](https://secure.travis-ci.org/bergie/where.png?branch=master)](http://travis-ci.org/bergie/where) [![Greenkeeper badge](https://badges.greenkeeper.io/bergie/where.svg)](https://greenkeeper.io/)
+Geographical utilities for Node.js [![Build Status](https://secure.travis-ci.org/bergie/where.png?branch=master)](http://travis-ci.org/bergie/where) [![Greenkeeper badge](https://badges.greenkeeper.io/bergie/where.svg)](https://greenkeeper.io/) [![Coverage Status](https://coveralls.io/repos/github/bergie/where/badge.svg)](https://coveralls.io/github/bergie/where)
 ==================================
 
 This library provides some basic utilities for building location-based applications.
