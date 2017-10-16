@@ -1,4 +1,4 @@
-Geographical utilities for Node.js [![Build Status](https://secure.travis-ci.org/bergie/where.png?branch=master)](http://travis-ci.org/bergie/where) [![Greenkeeper badge](https://badges.greenkeeper.io/bergie/where.svg)](https://greenkeeper.io/)
+Geographical utilities for Node.js [![Build Status](https://secure.travis-ci.org/bergie/where.png?branch=master)](http://travis-ci.org/bergie/where) [![Greenkeeper badge](https://badges.greenkeeper.io/bergie/where.svg)](https://greenkeeper.io/) [![Coverage Status](https://coveralls.io/repos/github/bergie/where/badge.svg)](https://coveralls.io/github/bergie/where)
 ==================================
 
 This library provides some basic utilities for building location-based applications.
@@ -44,7 +44,8 @@ var geocoder = new where.Geocoder;
 geocoder.toPoint({
   display_name: 'Helsinki',
   country: 'fi'
-}, function (err, points) {
+})
+.then((points) => {
   points[0].lat; // 60.1666277
   points[0].lon; // 24.9435079 
 });
@@ -81,3 +82,8 @@ malmi.directionTo(bbox.sw); // SW
 This library is provided under the MIT license. Contributions to the project are welcome on GitHub.
 
 Initially this has been a Node.js port of my earlier [PHP library](http://github.com/bergie/midgardmvc_helper_location).
+
+## Changes
+
+* 0.3.0 (October 16 2017)
+  - Switched asynchronous geocoding methods to return a promise instead of using a callback

@@ -1,3 +1,4 @@
 node_modules/
 src/*.coffee
 test/*.js
+.nyc_output/
