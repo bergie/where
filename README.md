@@ -45,19 +45,20 @@ geocoder.toPoint({
   display_name: 'Helsinki',
   country: 'fi'
 })
-.then((points) => {
-  points[0].lat; // 60.1666277
-  points[0].lon; // 24.9435079 
-});
+  .then((points) => {
+    points[0].lat; // 60.1666277
+    points[0].lon; // 24.9435079
+  });
 ```
 
 Converting coordinates to human-readable addresses (reverse geocoding, powered by [OpenStreetMap Nominatim](http://wiki.openstreetmap.org/wiki/Nominatim)):
 
 ```javascript
-geocoder.fromPoint(malmi, function (err, location) {
-  location.address.road; // Malminkaari
-  location.address.city; // Helsinki
-});
+geocoder.fromPoint(malmi)
+  .then((location) => {
+    location.address.road; // Malminkaari
+    location.address.city; // Helsinki
+  });
 ```
 
 Creating bounding boxes for a given radius (coming soon):
