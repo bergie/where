@@ -12,7 +12,7 @@
   "version": "0.3.0",
   "license": "MIT",
   "dependencies": {
-    "request": "^2.79.0"
+    "request": "^2.85.0"
   },
   "engines": {
     "node": ">=6"
