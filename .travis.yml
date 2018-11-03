@@ -1,6 +1,6 @@
 language: node_js
 node_js:
-- 'lts/*'
+- lts/*
 script: npm test
 after_success:
 - "./node_modules/.bin/nyc report --reporter=text-lcov | ./node_modules/.bin/coveralls"
@@ -8,7 +8,7 @@ deploy:
   provider: npm
   email: henri.bergius@iki.fi
   api_key:
-    secure: gBlGgaFSMPeNjy5rkN6898K1kXcZrp8p69kS+e0XBOBkJLkLY+dF6K5TGWSf1k8hsRnqWc2g6XWkm41NvUANLifeXc7tHVDHCIHJjjLNoi1jGUFtmzsH82m1PIqk8h9tnChUMBcqROtxIUKkTiAygElWJRLC9yPh5gHvJFoN20g=
+    secure: jq8bneTMXtyN/dsuMWksxA5WGasbvtTKjA1GiCW9mL8LBPdM7FF3hCrqkXt/tV8nyoeDHm/kqr5OrE1TqMUZhIWvTiRiI8bb6Tq/JfqF0hvwpiAcbUbbkoo+616ClKnNz8+y3fmNo6ufdIhrbQizEh7xKZ+Lv69WvkPiMSWehq8=
   on:
     tags: true
     repo: bergie/where
