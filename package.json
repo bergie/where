@@ -9,7 +9,7 @@
     "gis"
   ],
   "author": "Henri Bergius <henri.bergius@iki.fi>",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "license": "MIT",
   "dependencies": {
     "isomorphic-fetch": "^2.2.1"

@@ -86,5 +86,7 @@ Initially this has been a Node.js port of my earlier [PHP library](http://github
 
 ## Changes
 
+* 0.3.1 (November 03 2018)
+  - Switched from request to the fetch library for browser compat
 * 0.3.0 (October 16 2017)
   - Switched asynchronous geocoding methods to return a promise instead of using a callback
