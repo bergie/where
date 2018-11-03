@@ -1,9 +1,7 @@
 module.exports = {
-  "extends": "standard",
-  "rules": {
-    "semi": [2, "always"]
+  extends: 'airbnb-base',
+  globals: {
+    fetch: false,
+    window: false,
   },
-  "globals": {
-    "fetch": false
-  }
 };
