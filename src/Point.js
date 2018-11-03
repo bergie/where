@@ -1,14 +1,8 @@
-/*
- * decaffeinate suggestions:
- * DS102: Remove unnecessary code created because of implicit returns
- * DS207: Consider shorter variations of null checks
- * Full docs: https://github.com/decaffeinate/decaffeinate/blob/master/docs/suggestions.md
- */
 const toRadians = degrees => (degrees * Math.PI) / 180;
 const toDegrees = radians => (radians * 180) / Math.PI;
 
 class Point {
-  constructor (lat, lon) {
+  constructor(lat, lon) {
     this.lat = lat;
     this.lon = lon;
     if ((typeof this.lat !== 'number') || (typeof this.lon !== 'number')) {
@@ -22,8 +16,8 @@ class Point {
     }
   }
 
-  toString () {
-    const prettyPrint = function (coord) {
+  toString() {
+    const prettyPrint = (coord) => {
       const degreesFloat = Math.abs(coord);
       const degrees = Math.floor(degreesFloat);
       const minutesFloat = 60 * (degreesFloat - degrees);
@@ -39,7 +33,7 @@ class Point {
     return `${prettyPrint(this.lat)}${ns} ${prettyPrint(this.lon)}${ew}`;
   }
 
-  bearingTo (to) {
+  bearingTo(to) {
     const distance = this.distanceTo(to);
     if (distance === 0) { return 0; }
 
@@ -48,12 +42,13 @@ class Point {
     const lat2 = toRadians(to.lat);
 
     const y = Math.sin(deltaLon) * Math.cos(lat2);
-    const x = (Math.cos(lat1) * Math.sin(lat2)) - (Math.sin(lat1) * Math.cos(lat2) * Math.cos(deltaLon));
+    const x = (Math.cos(lat1) * Math.sin(lat2))
+      - (Math.sin(lat1) * Math.cos(lat2) * Math.cos(deltaLon));
     const res = toDegrees(Math.atan2(y, x));
     return Math.round((res + 360) % 360);
   }
 
-  bearingChange (origin, to) {
+  bearingChange(origin, to) {
     const previous = origin.bearingTo(to);
     const current = to.bearingTo(this);
     let difference = current - previous;
@@ -66,7 +61,7 @@ class Point {
     return difference;
   }
 
-  directionTo (to) {
+  directionTo(to) {
     const bearing = this.bearingTo(to);
     const dirs = ['N', 'E', 'S', 'W'];
     const rounded = Math.round(bearing / 22.5) % 16;
@@ -78,23 +73,21 @@ class Point {
     return dir;
   }
 
-  distanceTo (to, unit) {
-    if (unit == null) { unit = 'K'; }
+  distanceTo(to, unit = 'K') {
     const startLat = toRadians(this.lat);
     const startLon = toRadians(this.lon);
     const endLat = toRadians(to.lat);
     const endLon = toRadians(to.lon);
     const dLat = endLat - startLat;
     const dLon = endLon - startLon;
-    const a = Math.pow(Math.sin(dLat / 2.0), 2) + (Math.cos(startLat) * Math.cos(endLat) * Math.pow(Math.sin(dLon / 2.0), 2));
+    const a = (Math.sin(dLat / 2.0) ** 2)
+      + (Math.cos(startLat)
+      * Math.cos(endLat)
+      * (Math.sin(dLon / 2.0) ** 2));
     const c = 2.0 * Math.atan2(Math.sqrt(a), Math.sqrt(1.0 - a));
     const res = Math.round((6371.0 * c) * 10) / 10;
     if (unit === 'N') { return Math.round((res * 0.539956803) * 10) / 10; }
     return res;
-  }
-
-  getBBox (distance) {
-    return null;
   }
 }
 
