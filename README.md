@@ -8,14 +8,14 @@ This library provides some basic utilities for building location-based applicati
 Start by importing _where_:
 
 ```javascript
-var where = require('where');
+const where = require('where');
 ```
 
 Given two points, the Helsinki-Malmi and Helsinki-Vantaa airports:
 
 ```javascript
-var malmi = new where.Point(60.254558, 25.042828);
-var vantaa = new where.Point(60.317222, 24.963333);
+const malmi = new where.Point(60.254558, 25.042828);
+const vantaa = new where.Point(60.317222, 24.963333);
 ```
 
 Calculating distances between points (in kilometers):
@@ -40,7 +40,7 @@ malmi.toString(); // 60°15′16″N 25°2′34″E
 Converting human-readable addresses to coordinates (geocoding, powered by [OpenStreetMap Nominatim](http://wiki.openstreetmap.org/wiki/Nominatim)):
 
 ```javascript
-var geocoder = new where.Geocoder;
+const geocoder = new where.Geocoder;
 geocoder.toPoint({
   display_name: 'Helsinki',
   country: 'fi'
@@ -65,7 +65,7 @@ Creating bounding boxes for a given radius (coming soon):
 
 ```javascript
 // 20km bounding box
-var bbox = malmi.getBBox(20);
+const bbox = malmi.getBBox(20);
 malmi.directionTo(bbox.sw); // SW
 ```
 
