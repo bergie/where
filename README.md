@@ -86,6 +86,8 @@ Initially this has been a Node.js port of my earlier [PHP library](http://github
 
 ## Changes
 
+* 0.3.2 (October 01 2019)
+  - Also available on GitHub Package Registry
 * 0.3.1 (November 03 2018)
   - Switched from request to the fetch library for browser compat
 * 0.3.0 (October 16 2017)
