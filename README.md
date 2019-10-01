@@ -86,10 +86,10 @@ Initially this has been a Node.js port of my earlier [PHP library](http://github
 
 ## Changes
 
-* 0.4.0 (git master)
+* 0.4.0 (October 01 2019)
   - Removed legacy [NodeXT](https://www.npmjs.com/package/nodext) support
 * 0.3.2 (October 01 2019)
-  - Also available on GitHub Package Registry
+  - Also available on [GitHub Package Registry](https://github.com/bergie/where/packages/29476)
 * 0.3.1 (November 03 2018)
   - Switched from request to the fetch library for browser compat
 * 0.3.0 (October 16 2017)
