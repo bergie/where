@@ -20,8 +20,8 @@ class Geocoder {
         'User-Agent': `Where ${where.version}`,
       },
     })
-      .then(res => res.json())
-      .then(res => res.map(r => new Point(parseFloat(r.lat), parseFloat(r.lon))));
+      .then((res) => res.json())
+      .then((res) => res.map((r) => new Point(parseFloat(r.lat), parseFloat(r.lon))));
   }
 
   fromPoint(point) {
