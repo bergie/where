@@ -86,6 +86,8 @@ Initially this has been a Node.js port of my earlier [PHP library](http://github
 
 ## Changes
 
+* 0.4.0 (git master)
+  - Removed legacy [NodeXT](https://www.npmjs.com/package/nodext) support
 * 0.3.2 (October 01 2019)
   - Also available on GitHub Package Registry
 * 0.3.1 (November 03 2018)
