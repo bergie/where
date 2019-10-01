@@ -21,6 +21,5 @@ jobs:
       run: |
         npm install
         npm test
-        npx nyc report --reporter=text-lcov | npx coveralls
       env:
         CI: true
