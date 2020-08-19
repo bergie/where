@@ -51,14 +51,19 @@ describe('Geographical point', function() {
 
   it('should be able to calculate distance to other points', function() {
     // There are 8.2 kilometers between the two Helsinki airports
-    efhf.distanceTo(efhk).should.equal(8.2);
+    efhf.distanceTo(efhk).should.equal(8.231);
 
     // 8.2 kilometers is approximately 4.4 nautical miles
     // efhf.distanceTo(efhk, 'N').should.equal 4.4
 
     // There are 9181.6 kilometers from Helsinki to Midgard
-    efhf.distanceTo(fymg).should.equal(9182);
-    return efhf.distanceTo(fymg, 'N').should.equal(4957.9);
+    efhf.distanceTo(fymg).should.equal(9182.033);
+    return efhf.distanceTo(fymg, 'N').should.equal(4957.901);
+  });
+  it('should be able to calculate also very short distances', function () {
+    const from = new Point(60.254558, 25.051917118289477);
+    const to = new Point(60.254558, 25.05282240895576);
+    from.distanceTo(to).should.equal(0.05);
   });
 
   it('should be able to calculate bearing to other points', function() {
