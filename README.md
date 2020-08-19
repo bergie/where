@@ -86,7 +86,7 @@ Initially this has been a Node.js port of my earlier [PHP library](http://github
 
 ## Changes
 
-* 0.4.1 (git master)
+* 0.4.1 (August 19 2020)
   - `distanceTo` method now returns distances rounded to one meter accuracy instead of 100 meter accuracy
 * 0.4.0 (October 01 2019)
   - Removed legacy [NodeXT](https://www.npmjs.com/package/nodext) support
