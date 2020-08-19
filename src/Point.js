@@ -85,8 +85,8 @@ class Point {
       * Math.cos(endLat)
       * (Math.sin(dLon / 2.0) ** 2));
     const c = 2.0 * Math.atan2(Math.sqrt(a), Math.sqrt(1.0 - a));
-    const res = Math.round((6371.0 * c) * 10) / 10;
-    if (unit === 'N') { return Math.round((res * 0.539956803) * 10) / 10; }
+    const res = Math.round((6371.0 * c) * 1000) / 1000;
+    if (unit === 'N') { return Math.round((res * 0.539956803) * 1000) / 1000; }
     return res;
   }
 }
