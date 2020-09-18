@@ -3,14 +3,11 @@ name: Node CI
 on: [push]
 
 jobs:
-  build:
-
+  test:
     runs-on: ubuntu-latest
-
     strategy:
       matrix:
         node-version: [10.x, 12.x]
-
     steps:
     - uses: actions/checkout@v1
     - name: Use Node.js ${{ matrix.node-version }}
@@ -23,3 +20,11 @@ jobs:
         npm test
       env:
         CI: true
+  merge-me:
+    name: Auto-merge dependency updates
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+    - uses: ridedott/merge-me-action@master
+      with:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
