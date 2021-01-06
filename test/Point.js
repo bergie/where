@@ -1,20 +1,17 @@
-/*
- * decaffeinate suggestions:
- * DS102: Remove unnecessary code created because of implicit returns
- * Full docs: https://github.com/decaffeinate/decaffeinate/blob/master/docs/suggestions.md
- */
 const chai = require('chai');
+
 (chai.should)();
 
-const {Point} = require('../index');
+const { Point } = require('../index');
 
-describe('Geographical point', function() {
+describe('Geographical point', () => {
   // We'll reuse these airports in various tests
   let efhf = null;
   let efhk = null;
   let fymg = null;
+  let spaceport = null;
 
-  it('should have coordinates', function() {
+  it('should have coordinates', () => {
     // Helsinki-Malmi airport in Finland
     efhf = new Point(60.254558, 25.042828);
     efhf.lat.should.equal(60.254558);
@@ -26,30 +23,37 @@ describe('Geographical point', function() {
     // Midgard airport in Namibia
     fymg = new Point(-22.083332, 17.366667);
     fymg.lat.should.equal(-22.083332);
-    return fymg.lon.should.equal(17.366667);
+    fymg.lon.should.equal(17.366667);
+
+    // Spaceport America
+    spaceport = new Point(32.990278, -106.969722);
+    spaceport.lon.should.equal(-106.969722);
   });
 
-  it('should only accept numbers', function() {
-    (() => new Point).should.throw('A pair of WGS-84 coordinates expected');
-    return (() => new Point('foo', 'bar')).should.throw('A pair of WGS-84 coordinates expected');
+  it('should only accept numbers', () => {
+    (() => new Point()).should.throw('A pair of WGS-84 coordinates expected');
+    (() => new Point('foo', 'bar')).should.throw('A pair of WGS-84 coordinates expected');
+    (() => new Point(10, 'bar')).should.throw('A pair of WGS-84 coordinates expected');
+    (() => new Point('foo', 10)).should.throw('A pair of WGS-84 coordinates expected');
   });
 
-  it('should only allow sensible latitudes', function() {
+  it('should only allow sensible latitudes', () => {
     (() => new Point(-120, 12)).should.throw('WGS-84 latitude must be between 90 and -90 degrees');
-    return (() => new Point(120, 12)).should.throw('WGS-84 latitude must be between 90 and -90 degrees');
+    (() => new Point(120, 12)).should.throw('WGS-84 latitude must be between 90 and -90 degrees');
   });
 
-  it('should only allow sensible longitudes', function() {
+  it('should only allow sensible longitudes', () => {
     (() => new Point(12, -300)).should.throw('WGS-84 longitude must be between 180 and -180 degrees');
-    return (() => new Point(12, 240)).should.throw('WGS-84 longitude must be between 180 and -180 degrees');
+    (() => new Point(12, 240)).should.throw('WGS-84 longitude must be between 180 and -180 degrees');
   });
 
-  it('should convert to a pretty string', function() {
+  it('should convert to a pretty string', () => {
     `${efhf}`.should.equal('60°15′16″N 25°2′34″E');
-    return `${fymg}`.should.equal('22°4′59″S 17°22′0″E');
+    `${fymg}`.should.equal('22°4′59″S 17°22′0″E');
+    `${spaceport}`.should.equal('32°59′25″N 106°58′10″W');
   });
 
-  it('should be able to calculate distance to other points', function() {
+  it('should be able to calculate distance to other points', () => {
     // There are 8.2 kilometers between the two Helsinki airports
     efhf.distanceTo(efhk).should.equal(8.231);
 
@@ -58,15 +62,15 @@ describe('Geographical point', function() {
 
     // There are 9181.6 kilometers from Helsinki to Midgard
     efhf.distanceTo(fymg).should.equal(9182.033);
-    return efhf.distanceTo(fymg, 'N').should.equal(4957.901);
+    efhf.distanceTo(fymg, 'N').should.equal(4957.901);
   });
-  it('should be able to calculate also very short distances', function () {
+  it('should be able to calculate also very short distances', () => {
     const from = new Point(60.254558, 25.051917118289477);
     const to = new Point(60.254558, 25.05282240895576);
     from.distanceTo(to).should.equal(0.05);
   });
 
-  it('should be able to calculate bearing to other points', function() {
+  it('should be able to calculate bearing to other points', () => {
     // Helsinki-Vantaa is in north of Helsinki-Malmi
     efhf.bearingTo(efhk).should.equal(328);
 
@@ -74,10 +78,10 @@ describe('Geographical point', function() {
     efhk.bearingTo(efhf).should.equal(148);
 
     // Midgard airport is way to the south
-    return efhf.bearingTo(fymg).should.equal(187);
+    efhf.bearingTo(fymg).should.equal(187);
   });
 
-  it('should be able to calculate changes in direction', function() {
+  it('should be able to calculate changes in direction', () => {
     // Started from Malmi towards Vantaa, then turned back
     efhf.bearingChange(efhf, efhk).should.equal(-180);
 
@@ -91,18 +95,18 @@ describe('Geographical point', function() {
     fymg.bearingChange(efhk, efhf).should.equal(39);
 
     // Started from Malmi towards Vantaa, then turned to Midgard
-    return fymg.bearingChange(efhf, efhk).should.equal(-141);
+    fymg.bearingChange(efhf, efhk).should.equal(-141);
   });
 
-  return it('should be able to tell direction to other points', function() {
+  it('should be able to tell direction to other points', () => {
     // Helsinki-Vantaa is in northwest of Helsinki-Malmi
     efhf.directionTo(efhk).should.equal('NW');
 
-    // Helsinki-Malmi is in southeast of Helsinki-Vantaa 
+    // Helsinki-Malmi is in southeast of Helsinki-Vantaa
     efhk.directionTo(efhf).should.equal('SE');
 
     // Midgard is way south
-    return efhf.directionTo(fymg).should.equal('S');
+    efhf.directionTo(fymg).should.equal('S');
   });
 
   /*

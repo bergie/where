@@ -45,5 +45,4 @@ class Geocoder {
   }
 }
 
-const root = typeof exports !== 'undefined' && exports !== null ? exports : window;
-root.Geocoder = Geocoder;
+exports.Geocoder = Geocoder;

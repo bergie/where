@@ -25,5 +25,4 @@ Object.defineProperty(BBox.prototype, 'nw',
     },
   });
 
-const root = typeof exports !== 'undefined' && exports !== null ? exports : window;
-root.BBox = BBox;
+exports.BBox = BBox;
