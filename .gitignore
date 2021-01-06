@@ -3,4 +3,5 @@ src/*.coffee
 test/*.js
 .nyc_output/
 .stryker-tmp/
+reports/
 package-lock.json
