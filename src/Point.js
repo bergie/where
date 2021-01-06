@@ -91,5 +91,4 @@ class Point {
   }
 }
 
-const root = typeof exports !== 'undefined' && exports !== null ? exports : window;
-root.Point = Point;
+exports.Point = Point;
