@@ -19,6 +19,9 @@ jobs:
     - run: npm test
       env:
         CI: true
+    - run: npm run mutate
+      env:
+        CI: true
   merge-me:
     name: Auto-merge dependency updates
     needs: test
