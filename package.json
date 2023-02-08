@@ -18,8 +18,8 @@
     "node": ">=6"
   },
   "devDependencies": {
-    "@stryker-mutator/core": "^4.3.1",
-    "@stryker-mutator/mocha-runner": "^4.3.1",
+    "@stryker-mutator/core": "^6.3.1",
+    "@stryker-mutator/mocha-runner": "^6.3.1",
     "chai": "^4.1.0",
     "coveralls": "^3.0.0",
     "eslint": "^7.7.0",
@@ -28,7 +28,7 @@
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-mocha": "^8.0.0",
     "express": "^4.14.0",
-    "mocha": "^8.1.1",
+    "mocha": "^10.2.0",
     "nyc": "^15.0.0",
     "stryker-cli": "^1.0.0"
   },
