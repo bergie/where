@@ -86,6 +86,8 @@ Initially this has been a Node.js port of my earlier [PHP library](http://github
 
 ## Changes
 
+* 0.4.2 (February 16 2023)
+  - Release to update dependencies due to security issues
 * 0.4.1 (August 19 2020)
   - `distanceTo` method now returns distances rounded to one meter accuracy instead of 100 meter accuracy
 * 0.4.0 (October 01 2019)
