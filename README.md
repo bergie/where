@@ -80,23 +80,6 @@ malmi.directionTo(bbox.sw); // SW
 
 ## Development
 
-This library is provided under the MIT license. Contributions to the project are welcome on GitHub.
+This library is provided under the MIT license. Contributions to the project are welcome on GitHub. Notable changes are described in the [changelog](CHANGELOG.md).
 
 Initially this has been a Node.js port of my earlier [PHP library](http://github.com/bergie/midgardmvc_helper_location).
-
-## Changes
-
-* git master
-  - Fixed bearing calculations across the antimeridian
-* 0.4.2 (February 16 2023)
-  - Release to update dependencies due to security issues
-* 0.4.1 (August 19 2020)
-  - `distanceTo` method now returns distances rounded to one meter accuracy instead of 100 meter accuracy
-* 0.4.0 (October 01 2019)
-  - Removed legacy [NodeXT](https://www.npmjs.com/package/nodext) support
-* 0.3.2 (October 01 2019)
-  - Also available on [GitHub Package Registry](https://github.com/bergie/where/packages/29476)
-* 0.3.1 (November 03 2018)
-  - Switched from request to the fetch library for browser compat
-* 0.3.0 (October 16 2017)
-  - Switched asynchronous geocoding methods to return a promise instead of using a callback
