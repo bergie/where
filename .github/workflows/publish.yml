@@ -32,19 +32,3 @@ jobs:
           package-manager-cache: false  # never use caching in release builds
           registry-url: https://registry.npmjs.org/
       - run: npm publish
-
-  publish-gpr:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2.3.4
-      - uses: actions/setup-node@v2.1.5
-        with:
-          node-version: 24
-          package-manager-cache: false  # never use caching in release builds
-          registry-url: https://npm.pkg.github.com/
-          scope: '@bergie'
-      - run: node .github/utils/scope-package.js
-      - run: npm publish
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
