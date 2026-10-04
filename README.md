@@ -86,6 +86,8 @@ Initially this has been a Node.js port of my earlier [PHP library](http://github
 
 ## Changes
 
+* git master
+  - Fixed bearing calculations across the antimeridian
 * 0.4.2 (February 16 2023)
   - Release to update dependencies due to security issues
 * 0.4.1 (August 19 2020)

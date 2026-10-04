@@ -37,7 +37,12 @@ class Point {
     const distance = this.distanceTo(to);
     if (distance === 0) { return 0; }
 
-    const deltaLon = toRadians(to.lon - this.lon);
+    // Normalize the longitude difference to the -180..180 range
+    // so that routes across the antimeridian measure correctly
+    let deltaLonDegrees = to.lon - this.lon;
+    if (deltaLonDegrees > 180) { deltaLonDegrees -= 360; }
+    if (deltaLonDegrees < -180) { deltaLonDegrees += 360; }
+    const deltaLon = toRadians(deltaLonDegrees);
     const lat1 = toRadians(this.lat);
     const lat2 = toRadians(to.lat);
 

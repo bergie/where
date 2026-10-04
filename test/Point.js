@@ -109,6 +109,57 @@ describe('Geographical point', () => {
     efhf.directionTo(fymg).should.equal('S');
   });
 
+  describe('across the antimeridian', () => {
+    // A point at 179.5E and a point at 179.5W on the equator
+    // are 1 degree of longitude apart, not 359 degrees
+    const eastSide = new Point(0, 179.5);
+    const westSide = new Point(0, -179.5);
+
+    it('should calculate short distances across the antimeridian', () => {
+      // 1 degree at the equator is roughly 60 nautical miles
+      eastSide.distanceTo(westSide, 'N').should.equal(60.04);
+      eastSide.distanceTo(westSide).should.equal(111.195);
+
+      // The distance is the same in both directions
+      westSide.distanceTo(eastSide, 'N').should.equal(60.04);
+    });
+
+    it('should calculate very short distances across the antimeridian', () => {
+      const from = new Point(0, 179.999);
+      const to = new Point(0, -179.999);
+      from.distanceTo(to).should.equal(0.222);
+    });
+
+    it('should calculate bearings across the antimeridian', () => {
+      // Going east from 179.5E crosses the antimeridian to 179.5W
+      eastSide.bearingTo(westSide).should.equal(90);
+      eastSide.directionTo(westSide).should.equal('E');
+
+      // Going west from 179.5W crosses the antimeridian to 179.5E,
+      // so the 179.5E point is to the _west_ of the 179.5W point
+      westSide.bearingTo(eastSide).should.equal(270);
+      westSide.directionTo(eastSide).should.equal('W');
+    });
+
+    it('should calculate bearings across the antimeridian at other latitudes', () => {
+      // From the 179.5W point the 179.5E point is due west, also off the equator
+      const northWestSide = new Point(60, -179.5);
+      const northEastSide = new Point(60, 179.5);
+      northWestSide.bearingTo(northEastSide).should.equal(270);
+      northEastSide.bearingTo(northWestSide).should.equal(90);
+    });
+
+    it('should calculate bearing changes across the antimeridian', () => {
+      // Traveling east from 179.9E, and then continuing east past the antimeridian
+      const start = new Point(0, 179.9);
+      const halfway = new Point(0, 179.95);
+      const past = new Point(0, -179.9);
+
+      // Both legs are due east, so the heading never changes
+      past.bearingChange(start, halfway).should.equal(0);
+    });
+  });
+
   /*
   it 'should be able to produce a bounding box for a desired radius', ->
     * Get 20km bounding box
