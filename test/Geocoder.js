@@ -22,7 +22,7 @@ describe('Geocoder', () => {
     return geocoder.fromPoint(efhf)
       .then((location) => {
         location.display_name.indexOf('Malmin lento').should.not.equal(-1);
-        location.address.neighbourhood.should.equal('Sunnuntaipalstat');
+        location.address.suburb.should.equal('Malmi');
         location.address.city.should.equal('Helsinki');
         location.address.country_code.should.equal('fi');
         return true;

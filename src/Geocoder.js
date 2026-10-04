@@ -5,8 +5,8 @@ const where = require('../package.json');
 
 class Geocoder {
   constructor() {
-    this.url = 'http://nominatim.openstreetmap.org/search';
-    this.revUrl = 'http://nominatim.openstreetmap.org/reverse';
+    this.url = 'https://nominatim.openstreetmap.org/search';
+    this.revUrl = 'https://nominatim.openstreetmap.org/reverse';
   }
 
   toPoint(location) {
