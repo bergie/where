@@ -1,29 +1,30 @@
-const chai = require('chai');
+import assert from "node:assert/strict";
+import { describe, it } from "node:test";
+import { BBox, Point } from "../index.js";
 
-(chai.should)();
-
-const { Point, BBox } = require('../index');
-
-describe('Geographical bounding box', () => {
-  it('should have corners', () => {
+describe("Geographical bounding box", () => {
+  it("should have corners", () => {
     const sw = new Point(60.254558, 24.963333);
     const ne = new Point(60.317222, 25.042828);
     const box = new BBox(sw, ne);
 
     // Corners actually set via constructor
-    box.sw.should.equal(sw);
-    box.ne.should.equal(ne);
+    assert.strictEqual(box.sw, sw);
+    assert.strictEqual(box.ne, ne);
 
     // Calculated corners
-    box.se.lat.should.equal(sw.lat);
-    box.se.lon.should.equal(ne.lon);
-    box.nw.lat.should.equal(ne.lat);
-    box.nw.lon.should.equal(sw.lon);
+    assert.strictEqual(box.se.lat, sw.lat);
+    assert.strictEqual(box.se.lon, ne.lon);
+    assert.strictEqual(box.nw.lat, ne.lat);
+    assert.strictEqual(box.nw.lon, sw.lon);
   });
 
-  it('should not allow arguments in wrong order', () => {
+  it("should not allow arguments in wrong order", () => {
     const sw = new Point(60.254558, 25.042828);
     const ne = new Point(60.317222, 24.963333);
-    (() => new BBox(sw, ne)).should.throw('SW corner and NE corner have to be in correct order');
+    assert.throws(
+      () => new BBox(sw, ne),
+      /SW corner and NE corner have to be in correct order/,
+    );
   });
 });

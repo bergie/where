@@ -1,4 +1,4 @@
-Geographical utilities for Node.js [![Build Status](https://github.com/bergie/where/workflows/Node%20CI/badge.svg)](https://github.com/bergie/where/actions) [![Coverage Status](https://coveralls.io/repos/github/bergie/where/badge.svg)](https://coveralls.io/github/bergie/where)
+Geographical utilities for Node.js
 ==================================
 
 This library provides some basic utilities for building location-based applications.
@@ -8,14 +8,14 @@ This library provides some basic utilities for building location-based applicati
 Start by importing _where_:
 
 ```javascript
-const where = require('where');
+import { Point, Geocoder } from 'where';
 ```
 
 Given two points, the Helsinki-Malmi and Helsinki-Vantaa airports:
 
 ```javascript
-const malmi = new where.Point(60.254558, 25.042828);
-const vantaa = new where.Point(60.317222, 24.963333);
+const malmi = new Point(60.254558, 25.042828);
+const vantaa = new Point(60.317222, 24.963333);
 ```
 
 Calculating distances between points (in kilometers):
@@ -40,10 +40,10 @@ malmi.toString(); // 60°15′16″N 25°2′34″E
 Converting human-readable addresses to coordinates (geocoding, powered by [OpenStreetMap Nominatim](http://wiki.openstreetmap.org/wiki/Nominatim)):
 
 ```javascript
-const geocoder = new where.Geocoder;
+const geocoder = new Geocoder();
 geocoder.toPoint({
   display_name: 'Helsinki',
-  country: 'fi'
+  country_code: 'fi'
 })
   .then((points) => {
     points[0].lat; // 60.1666277
@@ -73,9 +73,11 @@ malmi.directionTo(bbox.sw); // SW
 
     $ npm install where --save
 
+Requires Node.js 20 or later. The library is published as an ECMAScript module.
+
 ## Running tests
 
-    $ npm install --dev
+    $ npm install
     $ npm test
 
 ## Development

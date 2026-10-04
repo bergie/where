@@ -6,6 +6,21 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [Unreleased]
 
+### Added
+
+- Type safety via JSDoc annotations, checked with `tsc` in `strict` mode
+- Linting and formatting with Biome, configured via `.editorconfig`
+
+### Changed
+
+- Converted the codebase from CommonJS to ECMAScript modules; Node.js 20 or later is now required
+- Geocoder uses async/await instead of promise chains
+- Geocoder uses the native `fetch` API and `URLSearchParams` instead of the `isomorphic-fetch` dependency
+
+### Removed
+
+- Removed dependencies replaced by runtime built-ins: `isomorphic-fetch`, Mocha, Chai, NYC, Coveralls, ESLint, and Express
+
 ## [0.4.3] - 2026-10-05
 
 ### Fixed
