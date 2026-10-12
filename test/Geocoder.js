@@ -6,7 +6,7 @@ describe("Geocoder", () => {
   const geocoder = new Geocoder();
 
   it("should be able to convert city and country to coordinates", {
-    timeout: 4000,
+    timeout: 20000,
   }, async () => {
     const points = await geocoder.toPoint({
       display_name: "Helsinki",
@@ -17,7 +17,7 @@ describe("Geocoder", () => {
   });
 
   it("should be able to convert coordinates to a place", {
-    timeout: 4000,
+    timeout: 20000,
   }, async () => {
     // Helsinki-Malmi airport in Finland
     const efhf = new Point(60.254558, 25.042828);

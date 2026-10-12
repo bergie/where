@@ -9,6 +9,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 ### Fixed
 
 - Zero-pad minutes and seconds to two digits in the pretty-printed coordinate string, e.g. `60°05′04″N` instead of `60°5′4″N` (#275)
+- Raised Geocoder test timeouts from 4s to 20s to avoid flaky failures against the live geocoding service on slow networks
 
 ## [1.0.0] - 2026-10-05
 
