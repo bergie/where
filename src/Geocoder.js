@@ -1,7 +1,4 @@
-import { createRequire } from "node:module";
 import { Point } from "./Point.js";
-
-const pkg = createRequire(import.meta.url)("../package.json");
 
 /**
  * A place to geocode, typically obtained via reverse geocoding.
@@ -42,7 +39,7 @@ class Geocoder {
     });
     const res = await fetch(`${this.url}?${query}`, {
       headers: {
-        "User-Agent": `where/${pkg.version}`,
+        "User-Agent": "where",
       },
     });
     const results = /** @type {Array<{lat: string, lon: string}>} */ (
@@ -68,7 +65,7 @@ class Geocoder {
     });
     const res = await fetch(`${this.revUrl}?${query}`, {
       headers: {
-        "User-Agent": `where/${pkg.version}`,
+        "User-Agent": "where",
       },
     });
     if (res.status !== 200) {

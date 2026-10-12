@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [Unreleased]
 
+### Changed
+
+- Removed `package.json` loading from Geocoder, making it usable in browsers; the Nominatim `User-Agent` header is now the static string `where` (browsers ignore it and send their own, as required by the spec)
+
 ## [1.0.1] - 2026-10-12
 
 ### Fixed
