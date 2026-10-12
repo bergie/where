@@ -39,7 +39,7 @@ class Point {
   /**
    * Pretty-prints the coordinates in degrees, minutes and seconds.
    *
-   * @returns {string} coordinates like `60°15′16″N 25°2′34″E`
+   * @returns {string} coordinates like `60°15′16″N 25°02′34″E`
    */
   toString() {
     /**
@@ -53,7 +53,7 @@ class Point {
       const minutes = Math.floor(minutesFloat);
       const secondsFloat = 60 * (minutesFloat - minutes);
       const seconds = Math.floor(secondsFloat);
-      return `${degrees}°${minutes}′${seconds}″`;
+      return `${degrees}°${String(minutes).padStart(2, "0")}′${String(seconds).padStart(2, "0")}″`;
     };
 
     const ns = this.lat > 0 ? "N" : "S";

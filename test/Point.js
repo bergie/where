@@ -63,8 +63,8 @@ describe("Geographical point", () => {
   });
 
   it("should convert to a pretty string", () => {
-    assert.strictEqual(`${efhf}`, "60°15′16″N 25°2′34″E");
-    assert.strictEqual(`${fymg}`, "22°4′59″S 17°22′0″E");
+    assert.strictEqual(`${efhf}`, "60°15′16″N 25°02′34″E");
+    assert.strictEqual(`${fymg}`, "22°04′59″S 17°22′00″E");
     assert.strictEqual(`${spaceport}`, "32°59′25″N 106°58′10″W");
   });
 
