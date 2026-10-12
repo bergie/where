@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [Unreleased]
 
+## [1.0.1] - 2026-10-12
+
 ### Fixed
 
 - Zero-pad minutes and seconds to two digits in the pretty-printed coordinate string, e.g. `60°05′04″N` instead of `60°5′4″N` (#275)
